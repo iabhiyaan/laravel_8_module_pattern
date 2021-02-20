@@ -1,7 +1,7 @@
 # Setup
 
 
-To get this project running locally first you have to run composer install:
+To get this project running locally first you have to run command:
 
 ```
 composer update
