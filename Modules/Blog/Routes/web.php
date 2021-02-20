@@ -11,6 +11,10 @@
 |
 */
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth',], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin'],], function () {
+    Route::resource('blog', 'BlogController');
+});
+
+Route::group(['prefix' => 'employeer', 'middleware' => ['auth', 'role:emp'],], function () {
     Route::resource('blog', 'BlogController');
 });

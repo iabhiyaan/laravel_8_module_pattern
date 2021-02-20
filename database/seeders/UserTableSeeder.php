@@ -15,9 +15,20 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Admin',
+            'name' => 'Super Admin',
             'email' => 'info@user.com',
             'password' => bcrypt('secret'),
+            'publish' => 1,
+            'role' => 'super-admin',
+        ]);
+
+        User::create([
+            'name' => 'Admin',
+            'email' => 'info@admin.com',
+            'password' => bcrypt('secret'),
+            'publish' => 1,
+            'role' => 'admin',
+            'access_level' => 'blog',
         ]);
     }
 }
