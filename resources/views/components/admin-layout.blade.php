@@ -1,3 +1,9 @@
+@php
+$user = auth()->user();
+$role = $user->role;
+$user_access = explode(',', $user->access_level);
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,28 +130,56 @@
                     </li>
 
                     {{-- blog --}}
-                    <li>
-                        <a href="javascript:;">
-                            <i class="sidebar-item-icon fa fa-sitemap"></i>
-                            <span class="nav-label">blog</span>
-                            <i class="fa fa-angle-left arrow"></i>
-                        </a>
-                        <ul class="nav-2-level collapse">
-                            <li>
-                                <a href="{{ route('blog.index') }}">
-                                    <span class="fa fa-plus"></span>
-                                    All lists
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('blog.create') }}">
-                                    <span class="fa fa-plus"></span>
-                                    Add new
-                                </a>
-                            </li>
+                    @if ($role == 'super-admin' || ($role == 'admin' && in_array('blog', $user_access)))
+                        <li>
+                            <a href="javascript:;">
+                                <i class="sidebar-item-icon fa fa-sitemap"></i>
+                                <span class="nav-label">blog</span>
+                                <i class="fa fa-angle-left arrow"></i>
+                            </a>
+                            <ul class="nav-2-level collapse">
+                                <li>
+                                    <a href="{{ route('blog.index') }}">
+                                        <span class="fa fa-plus"></span>
+                                        All lists
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('blog.create') }}">
+                                        <span class="fa fa-plus"></span>
+                                        Add new
+                                    </a>
+                                </li>
 
-                        </ul>
-                    </li>
+                            </ul>
+                        </li>
+                    @endif
+
+                    {{-- admin user --}}
+                    @if ($role == 'super-admin' || ($role == 'admin' && in_array('user', $user_access)))
+                        <li>
+                            <a href="javascript:;">
+                                <i class="sidebar-item-icon fa fa-sitemap"></i>
+                                <span class="nav-label">admin user</span>
+                                <i class="fa fa-angle-left arrow"></i>
+                            </a>
+                            <ul class="nav-2-level collapse">
+                                <li>
+                                    <a href="{{ route('user.index') }}">
+                                        <span class="fa fa-plus"></span>
+                                        All lists
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('user.create') }}">
+                                        <span class="fa fa-plus"></span>
+                                        Add new
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    @endif
 
                 </ul>
             </div>

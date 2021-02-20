@@ -2,5 +2,7 @@
     "Blogs": true,
     "Dashboard": true,
     "Blog": true,
-    "Test": true
+    "Test": true,
+    "User": true,
+    "AdminUser": true
 }

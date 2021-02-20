@@ -12,5 +12,5 @@
 */
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin'],], function () {
-    Route::resource('blog', 'BlogController');
+    Route::resource('user', 'AdminUserController');
 });
