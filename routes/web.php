@@ -16,8 +16,8 @@ Route::get('optimize-clear', function () {
 });
 
 Route::group([], function () {
-    Route::get('login', [LoginController::class, 'login'])->name('login');
-    Route::post('postLogin', [LoginController::class, 'postLogin'])->name('postLogin');
+    Route::get('login', [LoginController::class, 'login'])->name('admin.login');
+    Route::post('postLogin', [LoginController::class, 'postLogin'])->name('admin.postLogin');
     Route::get('password-reset', [PasswordResetController::class, 'resetForm'])->name('password-reset');
     Route::post('send-email-link', [PasswordResetController::class, 'sendEmailLink'])->name('sendEmailLink');
     Route::get('reset-password/{token}', [PasswordResetController::class, 'passwordResetForm'])->name('passwordResetForm');

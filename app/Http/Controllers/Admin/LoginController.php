@@ -16,7 +16,7 @@ class LoginController extends Controller
    }
    public function postLogin(Request $request)
    {
-      $this->validate($request, [
+      $request->validate([
          'email'    => 'required',
          'password' => 'required',
       ]);
@@ -44,6 +44,6 @@ class LoginController extends Controller
    {
       Auth::logout();
       Session::flush();
-      return redirect()->route('login');
+      return redirect()->route('admin.login');
    }
 }

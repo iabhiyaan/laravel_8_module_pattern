@@ -1,6 +1,6 @@
 <x-auth-layout title="Admin Login">
 
-    <form id="login-form" action="{{ route('postLogin') }}" method="POST">
+    <form id="login-form" action="{{ route('admin.postLogin') }}" method="POST">
         @csrf
         <h2 class="login-title">Log in</h2>
         <div class="form-group">
